@@ -29,7 +29,7 @@ start_inf <- user(1)          # Start infected population
 births <- I * mu_tb + N * mu  # Births (for a stable population)
 t_intervention <- user(100)   # Intervention time
 t_stop_transmission <- user(150)
-time_implementation <- user(3)
+time_implementation <- user(365)
 #This is to simulate a staggered introduction over the time specified in time_implementation
 implementation_multiplier <- if(t >= (t_intervention + time_implementation)) 1 else (t - (t_intervention - 1))/time_implementation
 

@@ -13,7 +13,7 @@ deriv(R) <- I * (Tx + selfcure) - R * (lambda * imm + relapse + mu)
 # Model Parameters
 T_lfx    <- 72                # Life expectancy
 T_dur    <- 3                 # Duration of infectious period
-beta     <- user(5)                 # Transmission rate per capita
+beta     <- user(5)           # Transmission rate per capita
 break_in <- 0.1*(1/T_lfx)     # Transition rate from latent into active disease
 selfcure <- 0.5*(1/T_dur)     # Rate of spontaneous cure
 mu       <- 1/T_lfx           # Background mortality rate
@@ -36,7 +36,7 @@ pDx   <- user(0.95)   # Probability of being diagnosed once care sought
 pTx   <- user(0.95)   # probability of receiving correct Tx if diagnosed
 T_rTx <- user(0.5)    # 6 months treatment duration
 
-Tx <- if(t >= t_intervention) (pDx * pTx * (1/(T_cs + T_rTx))) * implementation_multiplier else 0
+Tx <- if(t >= t_intervention) (pDx * pTx * (1/(T_cs + T_rTx))) else 0#if(t >= t_intervention) (pDx * pTx * (1/(T_cs + T_rTx))) * implementation_multiplier else 0
 
 #Outputs
 output(Incidence)  <- U * (lambda * fast) + R * (lambda * fast * imm) + L * break_in + R * relapse 
